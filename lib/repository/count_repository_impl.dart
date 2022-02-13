@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:testable_riverpod_sample/domain/count.dart';
 import 'package:testable_riverpod_sample/repository/count_repository.dart';
 
 class CountRepositoryImpl implements CountRepository {
@@ -9,21 +10,15 @@ class CountRepositoryImpl implements CountRepository {
   final _store = FirebaseFirestore.instance;
 
   @override
-  Future<void> setCount(String countId, int count) {
-    return _store
-        .collection('counts')
-        .doc(countId)
-        .set({'countId': countId, 'count': count, 'updatedAt': DateTime.now()});
+  Future<void> setCount(Count count) {
+    return _store.collection('counts').doc(count.countId).set(count.toJson());
   }
 
   @override
-  Future<int> getCount(String countId) {
-    return _store.collection('counts').doc(countId).get().then((snapshot) {
-      if (snapshot.data() != null) {
-        return snapshot.data()! as int;
-      } else {
-        return 0;
-      }
+  Future<Count?> getCount(String countId) {
+    return _store.collection('counts').doc(countId).get().then((snap) {
+      if (snap.data() == null) return null;
+      return Count.fromJson(snap.data()!);
     });
   }
 }
