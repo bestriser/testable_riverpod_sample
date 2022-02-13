@@ -8,6 +8,9 @@ class CounterPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(counterProvider);
+    final controller = ref.read(counterProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Center(
@@ -15,17 +18,15 @@ class CounterPage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('You have pushed the button this many times:'),
-            Consumer(builder: (context, ref, _) {
-              return Text(
-                '${ref.watch(counterProvider.state).state}',
-                style: Theme.of(context).textTheme.headline4,
-              );
-            }),
+            Text(
+              '$state',
+              style: Theme.of(context).textTheme.headline4,
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => ref.read(counterProvider.state).state++,
+        onPressed: () => controller.increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
