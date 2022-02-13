@@ -1,4 +1,4 @@
-package jp.co.bestrise.testable.riverpod.sample.testable_riverpod_sample
+package jp.co.bestrise.testable.riverpod.sample
 
 import io.flutter.embedding.android.FlutterActivity
 
