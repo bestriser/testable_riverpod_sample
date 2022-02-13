@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "195420202310",
+    "project_id": "testable-riverpod-sample",
+    "storage_bucket": "testable-riverpod-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195420202310:android:32345aaa3ab598dfce7147",
+        "android_client_info": {
+          "package_name": "jp.co.bestrise.testable.riverpod.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195420202310-ga5c9s68pdgfalno5ne0q9rh10a4r1m6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkH2dy0P7RJxosQ1qb3DVHAhrmAMZ5TkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195420202310-ga5c9s68pdgfalno5ne0q9rh10a4r1m6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "195420202310-cgv7nq7elkcmsmmdjf3nge28ua4lja14.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.co.bestrise.testable.riverpod.sample"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
