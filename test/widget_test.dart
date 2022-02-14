@@ -18,16 +18,26 @@ void main() {
       ),
     );
 
+    // The first frame is a loading state.
+    expect(find.text('読み込み中...'), findsOneWidget);
+    expect(find.text('5'), findsNothing);
+    expect(find.text('6'), findsNothing);
+
+    // Re-render. TodoListProvider should have finished fetching the todos by now
+    await tester.pump();
+
     // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('読み込み中...'), findsNothing);
+    expect(find.text('5'), findsOneWidget);
+    expect(find.text('6'), findsNothing);
 
     // Tap the '+' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.add));
     await tester.pump();
 
     // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('読み込み中...'), findsNothing);
+    expect(find.text('5'), findsNothing);
+    expect(find.text('6'), findsOneWidget);
   });
 }
