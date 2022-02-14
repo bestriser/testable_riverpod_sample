@@ -3,17 +3,29 @@ import 'package:testable_riverpod_sample/domain/count.dart';
 import 'package:testable_riverpod_sample/repository/count_repository.dart';
 import 'package:testable_riverpod_sample/utility/constants.dart';
 
-final counterProvider = StateNotifierProvider<CounterController, Count>(
-    (ref) => CounterController(ref.read(countRepositoryProvider)));
+final _currentCountProvider = FutureProvider(
+    (ref) => ref.read(countRepositoryProvider).getCount(Constants.countId));
 
-class CounterController extends StateNotifier<Count> {
-  CounterController(this._repo)
-      : super(Count(countId: Constants.countId, count: 0));
+final counterProvider =
+    StateNotifierProvider<CounterController, AsyncValue<Count?>>((ref) {
+  final repo = ref.read(countRepositoryProvider);
+  final currentCount = ref.watch(_currentCountProvider);
+  return CounterController(repo, currentCount);
+});
+
+class CounterController extends StateNotifier<AsyncValue<Count?>> {
+  CounterController(this._repo, currentCount) : super(currentCount);
 
   final CountRepository _repo;
 
   void increment() {
-    state = state.copyWith(count: state.count + 1, updatedAt: DateTime.now());
-    _repo.setCount(state);
+    if (state.value == null) return;
+    state = AsyncValue.data(
+      state.value!.copyWith(
+        count: state.value!.count + 1,
+        updatedAt: DateTime.now(),
+      ),
+    );
+    _repo.setCount(state.value!);
   }
 }

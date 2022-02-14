@@ -11,6 +11,9 @@ class CounterPage extends ConsumerWidget {
     final state = ref.watch(counterProvider);
     final controller = ref.read(counterProvider.notifier);
 
+    Widget _counterText(String text) =>
+        Text(text, style: Theme.of(context).textTheme.headline4);
+
     return Scaffold(
       appBar: AppBar(title: Text(title), centerTitle: true),
       body: Center(
@@ -18,9 +21,10 @@ class CounterPage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('You have pushed the button this many times:'),
-            Text(
-              '${state.count}',
-              style: Theme.of(context).textTheme.headline4,
+            state.when(
+              loading: () => _counterText('読み込み中...'),
+              error: (error, _) => _counterText('$error'),
+              data: (count) => _counterText('${count?.count ?? 0}'),
             ),
           ],
         ),

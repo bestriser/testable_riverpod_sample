@@ -15,7 +15,10 @@ class CountRepository {
     return _store.collection('counts').doc(count.countId).set(count.toJson());
   }
 
-  Future<Count?> getCount(String countId) {
+  Future<Count?> getCount(String countId) async {
+    // ローディングの表示確認用
+    await Future.delayed(const Duration(seconds: 3));
+
     return _store.collection('counts').doc(countId).get().then((snap) {
       if (snap.data() == null) return null;
       return Count.fromJson(snap.data()!);
