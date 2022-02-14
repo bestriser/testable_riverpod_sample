@@ -12,7 +12,7 @@ class CounterPage extends ConsumerWidget {
     final controller = ref.read(counterProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: Text(title), centerTitle: true),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
