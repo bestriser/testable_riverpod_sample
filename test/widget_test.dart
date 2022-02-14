@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:testable_riverpod_sample/app.dart';
-import 'repository/fake_count_repository.dart';
 import 'package:testable_riverpod_sample/repository/count_repository.dart';
+
+import 'repository/fake_count_repository.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
