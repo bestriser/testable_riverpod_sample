@@ -2,10 +2,10 @@ import 'package:testable_riverpod_sample/domain/count.dart';
 import 'package:testable_riverpod_sample/repository/count_repository.dart';
 import 'package:testable_riverpod_sample/utility/constants.dart';
 
-class CountRepositoryFake implements CountRepository {
-  static final CountRepositoryFake _cache = CountRepositoryFake._internal();
-  CountRepositoryFake._internal();
-  factory CountRepositoryFake() => _cache;
+class FakeCountRepository implements CountRepository {
+  static final FakeCountRepository _cache = FakeCountRepository._internal();
+  FakeCountRepository._internal();
+  factory FakeCountRepository() => _cache;
 
   @override
   Future<void> setCount(Count count) => Future.value();
