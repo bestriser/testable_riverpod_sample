@@ -11,9 +11,8 @@ class CountRepository {
 
   final _store = FirebaseFirestore.instance;
 
-  Future<void> setCount(Count count) {
-    return _store.collection('counts').doc(count.countId).set(count.toJson());
-  }
+  Future<void> setCount(Count count) =>
+      _store.collection('counts').doc(count.countId).set(count.toJson());
 
   Future<Count?> getCount(String countId) async {
     // ローディングの表示確認用
