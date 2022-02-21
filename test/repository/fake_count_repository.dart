@@ -12,5 +12,6 @@ class FakeCountRepository implements CountRepository {
   Future<void> setCount(Count count) => Future.value();
 
   @override
-  Future<Count?> getCount(String countId) async => DummyCount.initialValue;
+  Future<Count?> getCount(String countId) =>
+      Future.value(DummyCount.initialValue);
 }
