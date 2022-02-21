@@ -26,7 +26,7 @@ void main() {
     // Re-render. TodoListProvider should have finished fetching the todos by now
     await tester.pump();
 
-    // Verify that our counter starts at 0.
+    // Verify that our counter starts at 5.
     expect(find.text('読み込み中...'), findsNothing);
     expect(find.text('5'), findsOneWidget);
     expect(find.text('6'), findsNothing);
