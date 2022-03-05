@@ -5,10 +5,6 @@ import 'package:testable_riverpod_sample/domain/count.dart';
 final countRepositoryProvider = Provider((ref) => CountRepository());
 
 class CountRepository {
-  static final CountRepository _cache = CountRepository._internal();
-  CountRepository._internal();
-  factory CountRepository() => _cache;
-
   final _store = FirebaseFirestore.instance;
 
   Future<void> setCount(Count count) =>
