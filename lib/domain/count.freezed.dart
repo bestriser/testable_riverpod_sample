@@ -12,34 +12,11 @@ part of 'count.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Count _$CountFromJson(Map<String, dynamic> json) {
   return _Count.fromJson(json);
 }
-
-/// @nodoc
-class _$CountTearOff {
-  const _$CountTearOff();
-
-  _Count call(
-      {required String countId,
-      required int count,
-      @DateTimeConverter() DateTime? updatedAt}) {
-    return _Count(
-      countId: countId,
-      count: count,
-      updatedAt: updatedAt,
-    );
-  }
-
-  Count fromJson(Map<String, Object?> json) {
-    return Count.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Count = _$CountTearOff();
 
 /// @nodoc
 mixin _$Count {
@@ -93,22 +70,22 @@ class _$CountCopyWithImpl<$Res> implements $CountCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CountCopyWith<$Res> implements $CountCopyWith<$Res> {
-  factory _$CountCopyWith(_Count value, $Res Function(_Count) then) =
-      __$CountCopyWithImpl<$Res>;
+abstract class _$$_CountCopyWith<$Res> implements $CountCopyWith<$Res> {
+  factory _$$_CountCopyWith(_$_Count value, $Res Function(_$_Count) then) =
+      __$$_CountCopyWithImpl<$Res>;
   @override
   $Res call(
       {String countId, int count, @DateTimeConverter() DateTime? updatedAt});
 }
 
 /// @nodoc
-class __$CountCopyWithImpl<$Res> extends _$CountCopyWithImpl<$Res>
-    implements _$CountCopyWith<$Res> {
-  __$CountCopyWithImpl(_Count _value, $Res Function(_Count) _then)
-      : super(_value, (v) => _then(v as _Count));
+class __$$_CountCopyWithImpl<$Res> extends _$CountCopyWithImpl<$Res>
+    implements _$$_CountCopyWith<$Res> {
+  __$$_CountCopyWithImpl(_$_Count _value, $Res Function(_$_Count) _then)
+      : super(_value, (v) => _then(v as _$_Count));
 
   @override
-  _Count get _value => super._value as _Count;
+  _$_Count get _value => super._value as _$_Count;
 
   @override
   $Res call({
@@ -116,7 +93,7 @@ class __$CountCopyWithImpl<$Res> extends _$CountCopyWithImpl<$Res>
     Object? count = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_Count(
+    return _then(_$_Count(
       countId: countId == freezed
           ? _value.countId
           : countId // ignore: cast_nullable_to_non_nullable
@@ -171,12 +148,13 @@ class _$_Count with DiagnosticableTreeMixin implements _Count {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Count &&
+            other is _$_Count &&
             const DeepCollectionEquality().equals(other.countId, countId) &&
             const DeepCollectionEquality().equals(other.count, count) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -186,8 +164,8 @@ class _$_Count with DiagnosticableTreeMixin implements _Count {
 
   @JsonKey(ignore: true)
   @override
-  _$CountCopyWith<_Count> get copyWith =>
-      __$CountCopyWithImpl<_Count>(this, _$identity);
+  _$$_CountCopyWith<_$_Count> get copyWith =>
+      __$$_CountCopyWithImpl<_$_Count>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -197,20 +175,21 @@ class _$_Count with DiagnosticableTreeMixin implements _Count {
 
 abstract class _Count implements Count {
   const factory _Count(
-      {required String countId,
-      required int count,
-      @DateTimeConverter() DateTime? updatedAt}) = _$_Count;
+      {required final String countId,
+      required final int count,
+      @DateTimeConverter() final DateTime? updatedAt}) = _$_Count;
 
   factory _Count.fromJson(Map<String, dynamic> json) = _$_Count.fromJson;
 
   @override
-  String get countId;
+  String get countId => throw _privateConstructorUsedError;
   @override
-  int get count;
+  int get count => throw _privateConstructorUsedError;
   @override
   @DateTimeConverter()
-  DateTime? get updatedAt;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CountCopyWith<_Count> get copyWith => throw _privateConstructorUsedError;
+  _$$_CountCopyWith<_$_Count> get copyWith =>
+      throw _privateConstructorUsedError;
 }
